@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Hyper One Gift – Mở Quà VIP 🎁</title>
+<style>
+:root {
+  --bg:#03060b;
+  --hyper:#2eaaff;
+  --accent:#8bffd8;
+  --vip:#ffb84d;
+  --text:#eaf3ff;
+}
+html,body {
+  margin:0;padding:0;height:100%;
+  background:radial-gradient(1200px 900px at 70% -10%,#14283d 0%,#070b13 70%,#03060b 100%);
+  color:var(--text);
+  font-family:"Inter",system-ui,sans-serif;
+  overflow:hidden;
+}
+
+/* ==== ANIMATION BACKGROUND ==== */
+.stars{
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.6),transparent),
+    radial-gradient(1px 1px at 80% 70%,rgba(255,255,255,.5),transparent),
+    radial-gradient(2px 2px at 50% 50%,rgba(255,255,255,.4),transparent);
+  animation:twinkle 6s infinite linear alternate;
+  opacity:.25;
+}
+@keyframes twinkle{
+  0%{opacity:.2;}50%{opacity:.6;}100%{opacity:.3;}
+}
+
+/* ==== HỘP QUÀ ==== */
+.container {
+  position:fixed;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:radial-gradient(circle at center,#05101d 0%,#03060b 100%);
+  z-index:1;
+}
+.gift {
+  position:relative;
+  width:180px;height:180px;
+  background:linear-gradient(180deg,var(--hyper),#005b8c);
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(46,170,255,.6),inset 0 0 10px rgba(255,255,255,.15);
+  animation:float 3s ease-in-out infinite;
+  cursor:pointer;transition:transform .5s ease;
+}
+.gift:hover{transform:scale(1.05);}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.gift::before{
+  content:"🎁";
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:90px;
+  text-shadow:0 0 30px rgba(255,255,255,.4);
+  animation:glowPulse 2s infinite ease-in-out;
+}
+@keyframes glowPulse{
+  0%,100%{filter:drop-shadow(0 0 10px var(--accent));}
+  50%{filter:drop-shadow(0 0 30px var(--vip));}
+}
+.lid{
+  position:absolute;top:-40px;left:0;width:100%;height:45px;
+  background:linear-gradient(180deg,var(--accent),var(--hyper));
+  border-radius:14px 14px 0 0;
+  transform-origin:center bottom;
+  transition:transform 1s ease;
+}
+.glow{
+  position:absolute;inset:0;
+  background:radial-gradient(circle at center,rgba(255,222,155,0.6) 0%,transparent 80%);
+  border-radius:20px;opacity:0;pointer-events:none;
+  filter:blur(15px);
+  transition:opacity 1s ease;
+}
+.flash{
+  position:fixed;inset:0;
+  background:radial-gradient(circle at center,rgba(255,255,255,0.9) 0%,transparent 80%);
+  opacity:0;z-index:999;pointer-events:none;
+}
+.text{
+  text-align:center;margin-top:36px;max-width:520px;
+  font-size:18px;color:#cbe4ff;line-height:1.7;
+}
+.text strong{color:var(--accent);}
+footer{text-align:center;margin-top:40px;color:#7da0c8;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<div class="container">
+  <div class="gift" id="giftBox">
+    <div class="lid" id="lid"></div>
+    <div class="glow" id="glow"></div>
+  </div>
+  <div class="text">
+    <p><strong>🎁 Hyper One có món quà đặc biệt dành cho bạn – <span style="color:var(--vip)">Trương Nhật Linh</span></strong></p>
+    <p>Nhấp vào hộp quà để mở. Bên trong là câu chuyện về <strong>thương hiệu cá nhân</strong> –  
+    nơi con người, hệ thống và AI cùng hội tụ để định hình hành trình doanh nhân của bạn.</p>
+  </div>
+  <footer>© 2025 HYPER ONE • Powered by AI Infrastructure</footer>
+</div>
+
+<div class="flash" id="flash"></div>
+
+<script>
+const gift=document.getElementById('giftBox');
+const lid=document.getElementById('lid');
+const glow=document.getElementById('glow');
+const flash=document.getElementById('flash');
+
+gift.addEventListener('click',()=>{
+  lid.style.transform='rotateX(120deg) translateY(-20px)';
+  glow.style.opacity='1';
+  flash.style.transition='opacity .6s ease';
+  flash.style.opacity='1';
+  setTimeout(()=>{flash.style.opacity='0';},800);
+  setTimeout(()=>{ window.location.href='gift.html'; },1500);
+});
+</script>
+</body>
+</html>
